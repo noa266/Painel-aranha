@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Painel OGR Aranha</title>
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:#0b0b0b;
+    color:white;
+    overflow:hidden;
+}
+
+/* LOGIN */
+#login{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:#111;
+    padding:20px;
+    border:2px solid red;
+    border-radius:10px;
+    width:250px;
+    text-align:center;
+}
+
+input{
+    width:90%;
+    padding:8px;
+    margin:5px;
+    background:#222;
+    border:none;
+    color:white;
+}
+
+button{
+    padding:8px;
+    margin-top:5px;
+    width:95%;
+    background:red;
+    border:none;
+    color:white;
+    cursor:pointer;
+}
+
+/* PAINEL */
+#menu{
+    position:absolute;
+    top:60px;
+    left:60px;
+    width:300px;
+    background:#111;
+    border:2px solid red;
+    border-radius:8px;
+    display:none;
+}
+
+/* Barra estilo PC */
+#barra{
+    background:#1a1a1a;
+    padding:5px;
+    cursor:move;
+}
+
+#barra span{
+    margin-right:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* FOV */
+#fov{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:300px;
+    height:300px;
+    border:2px solid red;
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+    display:none;
+}
+
+/* Skeleton */
+#skeleton{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color:lime;
+    text-align:center;
+    display:none;
+}
+
+.line{
+    width:2px;
+    height:40px;
+    background:lime;
+    margin:auto;
+}
+
+/* Vida */
+#vida{
+    position:absolute;
+    top:40%;
+    left:60%;
+    color:red;
+    display:none;
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login">
+    <h3>Login Painel</h3>
+    <input type="text" id="user" placeholder="Usuário">
+    <input type="password" id="senha" placeholder="Senha">
+    <button onclick="mostrarSenha()">Mostrar Senha</button>
+    <button onclick="entrar()">Entrar</button>
+    <p>TikTok: @ogr.aranha.10centv</p>
+</div>
+
+<!-- FOV -->
+<div id="fov"></div>
+
+<!-- Skeleton -->
+<div id="skeleton">
+    HEAD
+    <div class="line"></div>
+    NECK
+    <div class="line"></div>
+    CHEST
+</div>
+
+<div id="vida">Vida: 200</div>
+
+<!-- PAINEL -->
+<div id="menu">
+    <div id="barra">
+        <span onclick="minimizar()">−</span>
+        <span onclick="fechar()">X</span>
+        Painel OGR Aranha
+    </div>
+
+    <div style="padding:10px;">
+        <label><input type="checkbox" onclick="toggleFOV()"> Aimbot FOV</label><br>
+        <label><input type="checkbox" onclick="toggleSkeleton()"> Esqueleto</label><br>
+        <label><input type="checkbox" onclick="toggleVida()"> Mostrar Vida</label><br>
+        <button onclick="telaEsticada()">Tela Esticada</button>
+    </div>
+</div>
+
+<button id="abrir" onclick="abrirMenu()" style="position:absolute;top:10px;left:10px;">+</button>
+
+<script>
+// LOGIN
+function entrar(){
+    var senha = document.getElementById("senha").value;
+    if(senha == "noah123"){
+        document.getElementById("login").style.display="none";
+        document.getElementById("menu").style.display="block";
+    }else{
+        alert("Senha errada");
+    }
+}
+
+// Mostrar senha
+function mostrarSenha(){
+    var s = document.getElementById("senha");
+    if(s.type=="password"){
+        s.type="text";
+    }else{
+        s.type="password";
+    }
+}
+
+// Menu
+function minimizar(){
+    document.getElementById("menu").style.display="none";
+}
+
+function fechar(){
+    document.getElementById("menu").style.display="none";
+}
+
+function abrirMenu(){
+    document.getElementById("menu").style.display="block";
+}
+
+// Funções
+function toggleFOV(){
+    var f = document.getElementById("fov");
+    f.style.display = f.style.display=="none" ? "block" : "none";
+}
+
+function toggleSkeleton(){
+    var s = document.getElementById("skeleton");
+    s.style.display = s.style.display=="none" ? "block" : "none";
+}
+
+function toggleVida(){
+    var v = document.getElementById("vida");
+    v.style.display = v.style.display=="none" ? "block" : "none";
+}
+
+function telaEsticada(){
+    document.body.style.transform="scale(1.2)";
+}
+</script>
+
+</body>
+</html>
